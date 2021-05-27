@@ -22,7 +22,7 @@ ENV M2="${M2_HOME}/bin"
 ENV PATH=$PATH:$JAVA:$M2
 RUN wget https://downloads.apache.org/maven/maven-3/${maven_version}/binaries/apache-maven-${maven_version}-bin.tar.gz -P /tmp \
     && tar xvfz /tmp/apache-maven-${maven_version}-bin.tar.gz -C /usr/local \
-    && rm -rf /opt/local \
+    && rm -rf /opt/local/my-bookstore-web \
     && git clone https://github.com/lekhrajprasad/my-bookstore-web.git /opt/local/my-bookstore-web \
     #&& cd /opt/local/ \
     #&& git checkout mybookstore-dev-v1.2 \
