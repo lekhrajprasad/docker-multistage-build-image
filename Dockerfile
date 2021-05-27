@@ -23,9 +23,9 @@ ENV PATH=$PATH:$JAVA:$M2
 RUN wget https://downloads.apache.org/maven/maven-3/${maven_version}/binaries/apache-maven-${maven_version}-bin.tar.gz -P /tmp \
     && tar xvfz /tmp/apache-maven-${maven_version}-bin.tar.gz -C /usr/local \
     && rm -rf /opt/local \
-    && git clone https://github.com/lekhrajprasad/mybookstore-v-1.2.git /opt/local \
-    && cd /opt/local/ \
-    && git checkout mybookstore-dev-v1.2 \
+    && git clone https://github.com/lekhrajprasad/my-bookstore-web.git /opt/local/my-bookstore-web \
+    #&& cd /opt/local/ \
+    #&& git checkout mybookstore-dev-v1.2 \
     && rm -rf /tmp/apache-maven-${maven_version}-bin.tar.gz \
     && yum clean all
 #RUN cd /opt/local/ \
@@ -57,5 +57,5 @@ RUN yum install wget -y \
     && yum clean all
 ADD server.xml /opt/apache-tomcat-${tomcat_version}/conf/
 ADD tomcat-users.xml /opt/apache-tomcat-${tomcat_version}/conf/
-COPY --from=mybuild /opt/local/my-bookstore-web/target/my-bookstore-web-v12.war /opt/apache-tomcat-${tomcat_version}/webapps/myapp.war
+COPY --from=mybuild /opt/local/my-bookstore-web/target/my-bookstore-web-v1d.war /opt/apache-tomcat-${tomcat_version}/webapps/myapp.war
 CMD ["/opt/apache-tomcat-9.0.46/bin/catalina.sh","run"]
